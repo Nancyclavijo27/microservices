@@ -1,0 +1,33 @@
+const {Schema}= require("mongoose");
+
+const filmSchema =new Schema({
+
+    "_id": String,
+    "title":  String,
+    "opening_crawl":  String,
+    "director":  String,
+    "producer":  String,
+    "release_date": Date,
+    "characters": [{ type:String, ref:"Character"}],
+    "planets": [{type:String, ref:"Planet"}],
+
+});
+
+filmSchema.statics.list=async function (){  //list trae todo 
+    return await this.find()
+    .populate("characters", ["_id", "name"])
+    .populate("planets", ["_id", "title"])
+}
+
+filmSchema.statics.get=async function (id){//get id  trae el id solicitado
+    return await this.findById(id)
+    .populate("character", ["_id", "name"])
+    .populate("planets", ["_id", "title"])
+}
+
+filmSchema.statics.insert=async function (film){//crea un personaje
+    return await this.create(film)
+    
+}
+
+module.exports= filmSchema
