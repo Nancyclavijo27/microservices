@@ -9,7 +9,9 @@ server.use(express.json());
 server.use(morgan("dev"));
 //server.use(validateModel);
 
-server.use(require("./routes"));
+//server.use(require("./routes"));
+
+server.use("/database", require("./routes"));
 
 
 module.exports = server
