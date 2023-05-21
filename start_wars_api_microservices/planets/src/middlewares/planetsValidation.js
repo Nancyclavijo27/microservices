@@ -1,8 +1,8 @@
-const {ClientError}= require("../utils/errores")
+const { ClientError } = require("../utils/errores");
 
-module.exports=(req, res, next)=>{
-
-    const { name }= req.body;
-    if(name) return next();
-    else throw new ClientError("Error en el nombre", 401);
+module.exports = (req, res, next) => {
+  const { name } = req.body;
+  if (name) {
+    return next();
+  } else throw new ClientError("Nombre req", 401);
 };

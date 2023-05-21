@@ -1,11 +1,10 @@
 const { Router } = require("express");
-const controllers =require("../controllers");
-const middlewares =require("../middlewares");
 
-const router =Router();
+const router = Router();
 
-router.get("/", controllers.getPlanets);
+router.get("/", (req, res) => res.status(200).send("Hello World"));
 
-router.post("/", middlewares.planetsValidation, controllers.createPlanets);
+router.use("/planets", require("./planetsRouters"));
+router.use("/planets", require("./createPlanet"));
 
 module.exports = router;

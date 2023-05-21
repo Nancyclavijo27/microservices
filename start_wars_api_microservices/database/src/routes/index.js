@@ -1,19 +1,14 @@
-const {Router}=require("express");
-const store = require("../database");
-const validateModel = require("../middleware/validateModel")
+const { Router } = require("express");
+const middleware = require("../middleware");
+const controllers = require("../controllers");
 
-const router= Router();
+const router = Router();
 
-router.get("/:model", validateModel, async (req,res)=>{
-    const { model} = req.params;
-    const response = await store[model].list();
-    res.status(200).json(response)
-})
-
-router.get("/:model/:id", validateModel, async (req,res)=>{
-    const { model, id} = req.params;
-    const response = await store[model].get(id);
-    res.status(200).json(response)
-})
+router.get(
+  "/:model",
+  middleware.validateModel,
+  controllers.modelListController
+);
+router.get("/:model/:id", controllers.modelIdController);
 
 module.exports = router;

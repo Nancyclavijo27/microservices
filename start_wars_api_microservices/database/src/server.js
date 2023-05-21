@@ -13,5 +13,24 @@ server.use(morgan("dev"));
 
 server.use("/database", require("./routes"));
 
+server.use("*", (req, res) => {
+    res.status(404).send("Not found");
+  });
+  
+  server.use((error, req, res, next) => {
+    console.log(error);
+    res
+      .status(error.statusCode || 500)
+      .send({ error: true, message: error.message });
+  });
+  
+
 
 module.exports = server
+
+
+
+
+
+
+
