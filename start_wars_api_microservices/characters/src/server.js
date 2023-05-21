@@ -16,10 +16,15 @@ server.use("*", (req,res)=>{
 //para sobreescribir el manejador de errores de express
 
 server.use((err, req, res, next)=>{
-    res.status(err, statusCode || 500).send({
-        error:true,
-        message:err.message,
+    console.log(error);
+  res
+    .status(error.statusCode || 500)
+    .send({ error: true, message: error.message });
     });
-});
+
 
 module.exports = server;
+
+
+
+
