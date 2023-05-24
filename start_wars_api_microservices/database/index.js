@@ -1,21 +1,14 @@
 const server = require("./src/server");
+const { Character, Film, Planet } = require("./src/store");
 
-//const { Character }=require("./src/database");
-
-//Character.list(1).then((res)=>console.log(res));
-//Character.get(1).then((res)=>console.log(res));
-
-//Character.insert({
-//  _id:"200",
- // name: "Nancy Clavijo",
- // birth_year:"1991",
-
-//})
-//.then((res)=>console.log(res));
-
-
-
-
+/* Character.list().then((res) => console.log(res[0]));
+Film.list().then((res) => console.log(res[0]));
+Planet.list().then((res) => console.log(res[0])); */
+/*Character.get(1).then((res) => console.log(res)); */
+/* Character.insert({ _id: "201", name: "Micaela", birth_year: "2000" }).then(
+  (res) => console.log(res)
+);
+ */
 server.listen(8004, () => {
-  console.log(`Database service  on PORT 8004`);
+  console.log("Database service listening on port 8004");
 });

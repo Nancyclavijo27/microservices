@@ -7,3 +7,4 @@ module.exports= async(req, res)=>{
         console.log("characters", data.data);
     response(res, 200, data.data);
 };
+

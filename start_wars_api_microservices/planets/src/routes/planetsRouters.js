@@ -1,8 +1,8 @@
 const { Router } = require("express");
 const constrollers = require("../controllers");
 
-const planetsRouter = Router();
+const planetsRouters = Router();
 
-planetsRouter.get("/", constrollers.getPlanets);
+planetsRouters.get("/", constrollers.getPlanets);
 
-module.exports = planetsRouter;
+module.exports = planetsRouters;
