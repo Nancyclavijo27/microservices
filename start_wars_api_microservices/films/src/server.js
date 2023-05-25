@@ -11,19 +11,17 @@ server.use(morgan("dev"));
 
 server.use(require("./routes"));
 
-server.use("*", (req,res)=>{
+server.use("*", (req, res) => {
     res.status(404).send("Not found");
-});
-
-//para sobreescribir el manejador de errores de express
-
-server.use((err, req, res, next)=>{
-    res.status(err, statusCode || 500).send({
-        error:true,
-        message:err.message,
-    });
-});
-
+  });
+  
+  server.use((error, req, res, next) => {
+    console.log(error);
+    res
+      .status(error.statusCode || 500)
+      .send({ error: true, message: error.message });
+  });
+  
 module.exports = server;
 
 
