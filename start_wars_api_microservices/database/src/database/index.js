@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const {NONGO_URI, MONGO_URI}= require("../cinfig/envs");
+const { MONGO_URI}= require("../cinfig/envs");
 
 const conn = mongoose.createConnection(MONGO_URI);
 
@@ -18,3 +18,8 @@ module.exports = {
     Film:conn.model("Film", require("./schemas/filmSchema")),
     Planet:conn.model("Planet", require("./schemas/planetSchema")),
 };
+
+
+
+
+

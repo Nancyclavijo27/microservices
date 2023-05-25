@@ -9,9 +9,11 @@ server.use(express.json());
 server.use(morgan("dev"));
 //server.use(validateModel);
 
-//server.use(require("./routes"));
+server.use(require("./routes"));
 
-server.use("/database", require("./routes"));
+//server.use("/database", require("./routes"));
+
+
 
 server.use("*", (req, res) => {
     res.status(404).send("Not found");
@@ -27,6 +29,8 @@ server.use("*", (req, res) => {
 
 
 module.exports = server
+
+
 
 
 
